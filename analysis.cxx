@@ -319,7 +319,7 @@ void analysisRunList(int option){
 
 void compareHisto(string histName){
     TFile *outputfile = new TFile("AnalysisTime.root","UPDATE");
-    TFile *file_in = TFile::Open("OutputTime.root", "read");
+    TFile *file_in = TFile::Open("DownloadTime.root", "read");
     if(file_in) Printf("Input data file loaded.");
     file_in->cd(histName.c_str());
     THStack *hStack = new THStack("stack", histName.c_str());
@@ -367,7 +367,7 @@ void compareHisto(string histName){
 
 void compareHistoPass(string histName){
     TFile *outputfile = new TFile("AnalysisTimePass.root","UPDATE");
-    TFile *file_in = TFile::Open("OutputTimePass.root", "read");
+    TFile *file_in = TFile::Open("DownloadTimePass.root", "read");
     if(file_in) Printf("Input data file loaded.");
     file_in->cd(histName.c_str());
     THStack *hStack = new THStack("stack", histName.c_str());
