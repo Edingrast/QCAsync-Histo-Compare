@@ -319,7 +319,7 @@ void analysisRunList(int option){
 
 void compareHisto(string histName){
     TFile *outputfile = new TFile("AnalysisTime.root","UPDATE");
-    TFile *file_in = TFile::Open("DownloadTime.root", "read");
+    TFile *file_in = TFile::Open("OutputTime.root", "read");
     if(file_in) Printf("Input data file loaded.");
     file_in->cd(histName.c_str());
     THStack *hStack = new THStack("stack", histName.c_str());
@@ -328,10 +328,10 @@ void compareHisto(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex"){
+    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
-            histName->SetLineColor(i+4);
+            histName->SetLineColor(i+1);
             norm = 1/histName->GetEntries();
             histName->Scale(norm);
             histName->Sumw2(kFALSE);
@@ -360,6 +360,16 @@ void compareHisto(string histName){
     }
     hStack->Draw("nostack");
     legend->Draw();
+    //axis labels
+    if(histName=="mMFTClusterSensorIndex") hStack->GetXaxis()->SetTitle("Chip ID");
+    if(histName=="mMFTClustersROFSize" || histName=="mMFTTrackROFSize") hStack->GetXaxis()->SetTitle("ROF Size");
+    if(histName=="mMFTClusterPatternIndex") hStack->GetXaxis()->SetTitle("Pattern ID");
+    if(histName=="mMFTTrackNumberOfClusters") hStack->GetXaxis()->SetTitle("#clusters");
+    if(histName=="mMFTTrackTanl") hStack->GetXaxis()->SetTitle("tan #lambda");
+    if(histName=="mMFTTrackPhi") hStack->GetXaxis()->SetTitle("#varphi");
+    if(histName=="mMFTTrackEta") hStack->GetXaxis()->SetTitle("#eta");
+    hStack->GetYaxis()->SetTitle("#entries");
+    
     outputfile->cd();
     c1->Write();
     outputfile->Close();
@@ -367,7 +377,7 @@ void compareHisto(string histName){
 
 void compareHistoPass(string histName){
     TFile *outputfile = new TFile("AnalysisTimePass.root","UPDATE");
-    TFile *file_in = TFile::Open("DownloadTimePass.root", "read");
+    TFile *file_in = TFile::Open("OutputTimePass.root", "read");
     if(file_in) Printf("Input data file loaded.");
     file_in->cd(histName.c_str());
     THStack *hStack = new THStack("stack", histName.c_str());
@@ -376,10 +386,10 @@ void compareHistoPass(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex"){
+    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
-            histName->SetLineColor(i+4);
+            histName->SetLineColor(i+1);
             norm = 1/histName->GetEntries();
             histName->Scale(norm);
             histName->Sumw2(kFALSE);
@@ -409,6 +419,15 @@ void compareHistoPass(string histName){
     
     hStack->Draw("nostack");
     legend->Draw();
+    
+    if(histName=="mMFTClusterSensorIndex") hStack->GetXaxis()->SetTitle("Chip ID");
+    if(histName=="mMFTClustersROFSize" || histName=="mMFTTrackROFSize") hStack->GetXaxis()->SetTitle("ROF Size");
+    if(histName=="mMFTClusterPatternIndex") hStack->GetXaxis()->SetTitle("Pattern ID");
+    if(histName=="mMFTTrackNumberOfClusters") hStack->GetXaxis()->SetTitle("#clusters");
+    if(histName=="mMFTTrackTanl") hStack->GetXaxis()->SetTitle("tan #lambda");
+    if(histName=="mMFTTrackPhi") hStack->GetXaxis()->SetTitle("#varphi");
+    if(histName=="mMFTTrackEta") hStack->GetXaxis()->SetTitle("#eta");
+    hStack->GetYaxis()->SetTitle("#entries");
     outputfile->cd();
     c1->Write();
     outputfile->Close();
@@ -425,10 +444,10 @@ void compareHistoRuns(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex"){
+    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
-            histName->SetLineColor(i+4);
+            histName->SetLineColor(i+1);
             norm = 1/histName->GetEntries();
             histName->Scale(norm);
             histName->Sumw2(kFALSE);
@@ -458,6 +477,14 @@ void compareHistoRuns(string histName){
 
     hStack->Draw("nostack");
     legend->Draw();
+    if(histName=="mMFTClusterSensorIndex") hStack->GetXaxis()->SetTitle("Chip ID");
+    if(histName=="mMFTClustersROFSize" || histName=="mMFTTrackROFSize") hStack->GetXaxis()->SetTitle("ROF Size");
+    if(histName=="mMFTClusterPatternIndex") hStack->GetXaxis()->SetTitle("Pattern ID");
+    if(histName=="mMFTTrackNumberOfClusters") hStack->GetXaxis()->SetTitle("#clusters");
+    if(histName=="mMFTTrackTanl") hStack->GetXaxis()->SetTitle("tan #lambda");
+    if(histName=="mMFTTrackPhi") hStack->GetXaxis()->SetTitle("#varphi");
+    if(histName=="mMFTTrackEta") hStack->GetXaxis()->SetTitle("#eta");
+    hStack->GetYaxis()->SetTitle("#entries");
     outputfile->cd();
     c1->Write();
     outputfile->Close();
@@ -474,10 +501,10 @@ void compareHistoRunsPass(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex"){
+    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
-            histName->SetLineColor(i+4);
+            histName->SetLineColor(i+1);
             norm = 1/histName->GetEntries();
             histName->Scale(norm);
             histName->Sumw2(kFALSE);
@@ -507,14 +534,22 @@ void compareHistoRunsPass(string histName){
     
     hStack->Draw("nostack");
     legend->Draw();
+    if(histName=="mMFTClusterSensorIndex") hStack->GetXaxis()->SetTitle("Chip ID");
+    if(histName=="mMFTClustersROFSize" || histName=="mMFTTrackROFSize") hStack->GetXaxis()->SetTitle("ROF Size");
+    if(histName=="mMFTClusterPatternIndex") hStack->GetXaxis()->SetTitle("Pattern ID");
+    if(histName=="mMFTTrackNumberOfClusters") hStack->GetXaxis()->SetTitle("#clusters");
+    if(histName=="mMFTTrackTanl") hStack->GetXaxis()->SetTitle("tan #lambda");
+    if(histName=="mMFTTrackPhi") hStack->GetXaxis()->SetTitle("#varphi");
+    if(histName=="mMFTTrackEta") hStack->GetXaxis()->SetTitle("#eta");
+    hStack->GetYaxis()->SetTitle("#entries");
     outputfile->cd();
     c1->Write();
     outputfile->Close();
 }
 
 void compareHistoRunList(string histName){
-    TFile *outputfile = new TFile("AnalysisRuns.root","UPDATE");
-    TFile *file_in = TFile::Open("DownloadRuns.root", "read");
+    TFile *outputfile = new TFile("AnalysisRunList.root","UPDATE");
+    TFile *file_in = TFile::Open("DownloadRunList.root", "read");
     if(file_in) Printf("Input data file loaded.");
     file_in->cd(histName.c_str());
     THStack *hStack = new THStack("stack", histName.c_str());
@@ -523,10 +558,10 @@ void compareHistoRunList(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex"){
+    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
-            histName->SetLineColor(i+4);
+            histName->SetLineColor(i+1);
             norm = 1/histName->GetEntries();
             histName->Scale(norm);
             histName->Sumw2(kFALSE);
@@ -556,6 +591,14 @@ void compareHistoRunList(string histName){
 
     hStack->Draw("nostack");
     legend->Draw();
+    if(histName=="mMFTClusterSensorIndex") hStack->GetXaxis()->SetTitle("Chip ID");
+    if(histName=="mMFTClustersROFSize" || histName=="mMFTTrackROFSize") hStack->GetXaxis()->SetTitle("ROF Size");
+    if(histName=="mMFTClusterPatternIndex") hStack->GetXaxis()->SetTitle("Pattern ID");
+    if(histName=="mMFTTrackNumberOfClusters") hStack->GetXaxis()->SetTitle("#clusters");
+    if(histName=="mMFTTrackTanl") hStack->GetXaxis()->SetTitle("tan #lambda");
+    if(histName=="mMFTTrackPhi") hStack->GetXaxis()->SetTitle("#varphi");
+    if(histName=="mMFTTrackEta") hStack->GetXaxis()->SetTitle("#eta");
+    hStack->GetYaxis()->SetTitle("#entries");
     outputfile->cd();
     c1->Write();
     outputfile->Close();
@@ -572,10 +615,10 @@ void compareHistoRunListPass(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex"){
+    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
-            histName->SetLineColor(i+4);
+            histName->SetLineColor(i+1);
             norm = 1/histName->GetEntries();
             histName->Scale(norm);
             histName->Sumw2(kFALSE);
@@ -605,6 +648,14 @@ void compareHistoRunListPass(string histName){
    
     hStack->Draw("nostack");
     legend->Draw();
+    if(histName=="mMFTClusterSensorIndex") hStack->GetXaxis()->SetTitle("Chip ID");
+    if(histName=="mMFTClustersROFSize" || histName=="mMFTTrackROFSize") hStack->GetXaxis()->SetTitle("ROF Size");
+    if(histName=="mMFTClusterPatternIndex") hStack->GetXaxis()->SetTitle("Pattern ID");
+    if(histName=="mMFTTrackNumberOfClusters") hStack->GetXaxis()->SetTitle("#clusters");
+    if(histName=="mMFTTrackTanl") hStack->GetXaxis()->SetTitle("tan #lambda");
+    if(histName=="mMFTTrackPhi") hStack->GetXaxis()->SetTitle("#varphi");
+    if(histName=="mMFTTrackEta") hStack->GetXaxis()->SetTitle("#eta");
+    hStack->GetYaxis()->SetTitle("#entries");
     outputfile->cd();
     c1->Write();
     outputfile->Close();
