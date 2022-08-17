@@ -402,17 +402,18 @@ void getTracksHistoRuns(string histName, vector<string> passlist, int runNumber1
     for(int i = 0; i<runlist.size();i++){
         metadata["RunNumber"] = runlist[i];
         TH1F* loadedHisto = api.retrieveFromTFileAny<TH1F>(specificPath.c_str(), metadata, timestamp);
-        if(loadedHisto)
+        if(!loadedHisto)
         {
+            cout << "Given Run does not exist" << endl;
+            continue;
+            
+        }
+        else{
             TH1F* h1 = dynamic_cast<TH1F*>(loadedHisto->Clone(Form("%s",runlist[i].c_str())));
             //h1->GetXaxis()->SetTitle(Form("Run %s",runlist[i].c_str()));
             outputfileRuns->cd();
             outputfileRuns->cd(histName.c_str());
             h1->Write();
-            
-        }
-        else{
-            cout << "RunNumber" << runlist[i] << "does not exist" << endl;
             }
         }
     outputfileRuns->Close();
@@ -479,6 +480,7 @@ void getClustersHistoRuns(string histName, vector<string> passlist, int runNumbe
             }
             else{
                 cout << "RunNumber" << runlist[i] << "does not exist" << endl;
+                continue;
             }
         }
         outputfileRuns->Close();
@@ -580,6 +582,10 @@ void getTracksHistoTime(string histName, vector<string> passlist, time_t ts_star
             //map<string, string> metadata;
             TH1F* loadedHisto = api.retrieveFromTFileAny<TH1F>(specificPath.c_str(), metadata, timestamp);
             //cout <<  metadata["RunNumber"] << endl;
+            if(!loadedHisto){
+                cout << "Given object doesn't exist" << endl;
+                continue;
+            }
             
               //outputfile
                  TFile *outputfile = new TFile("DownloadTime.root","UPDATE");
@@ -686,7 +692,10 @@ void getClustersHistoTime(string histName, vector<string> passlist, time_t ts_st
             //map<string, string> metadata;
             TH1F* loadedHisto = api.retrieveFromTFileAny<TH1F>(specificPath.c_str(), metadata, timestamp);
             //cout <<  metadata["RunNumber"] << endl;
-            
+            if(!loadedHisto){
+                cout << "Given object doesn't exist" << endl;
+                continue;
+            }
               //outputfile
                  TFile *outputfile = new TFile("DownloadTime.root","UPDATE");
               //save histo
@@ -747,6 +756,11 @@ void getClustersHistoRunList(string histName, vector<string> passlist, vector<in
                     string specificPath = ss.str();
                     TH1F* loadedHisto = api.retrieveFromTFileAny<TH1F>(specificPath.c_str(), metadata, timestamp);
                     
+                    if(!loadedHisto){
+                        cout << "Given Run Pass combination does not exist" << endl;
+                        continue;
+                    }
+                    
                       //outputfile
                          TFile *outputfile = new TFile("DownloadRunList.root","UPDATE");
                       //save histo
@@ -805,6 +819,12 @@ void getTracksHistoRunList(string histName, vector<string> passlist, vector<int>
                 ss << fixedPathPart << histName;
                 string specificPath = ss.str();
                 TH1F* loadedHisto = api.retrieveFromTFileAny<TH1F>(specificPath.c_str(), metadata, timestamp);
+                
+                if(!loadedHisto){
+                    cout << "Given Run does not exist" << endl;
+                    continue;
+                }
+            
                 
                   //outputfile
                      TFile *outputfile = new TFile("DownloadRunList.root","UPDATE");
