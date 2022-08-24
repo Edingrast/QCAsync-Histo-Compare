@@ -328,7 +328,6 @@ void compareHisto(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
             histName->SetLineColor(i+1);
@@ -339,16 +338,7 @@ void compareHisto(string histName){
             legend->AddEntry(histName,Form("Run %s",histName->GetName()));
             i++;
         }
-    }
-    else{
-       while ((key=(TKey*)next())) {
-           TH1F *histName = (TH1F*)key->ReadObj();
-           histName->SetLineColor(i+1);
-           hStack->Add(histName);
-           legend->AddEntry(histName,Form("Run %s",histName->GetName()));
-           i++;
-       }
-    }
+
     TCanvas *c1 = new TCanvas(histName.c_str(),histName.c_str());
     c1->cd();
     if(histName=="mMFTClusterSensorIndex" || histName=="mMFTClusterPatternIndex"){
@@ -386,7 +376,6 @@ void compareHistoPass(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
             histName->SetLineColor(i+1);
@@ -397,16 +386,7 @@ void compareHistoPass(string histName){
             legend->AddEntry(histName,Form("Run %s",histName->GetName()));
             i++;
         }
-    }
-    else{
-       while ((key=(TKey*)next())) {
-           TH1F *histName = (TH1F*)key->ReadObj();
-           histName->SetLineColor(i+1);
-           hStack->Add(histName);
-           legend->AddEntry(histName,Form("Run %s",histName->GetName()));
-           i++;
-       }
-    }
+
     TCanvas *c1 = new TCanvas(histName.c_str(),histName.c_str());
     c1->cd();
     if(histName=="mMFTClusterSensorIndex" || histName=="mMFTClusterPatternIndex"){
@@ -444,7 +424,6 @@ void compareHistoRuns(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
             histName->SetLineColor(i+1);
@@ -455,16 +434,7 @@ void compareHistoRuns(string histName){
             legend->AddEntry(histName,Form("Run %s",histName->GetName()));
             i++;
         }
-    }
-    else{
-       while ((key=(TKey*)next())) {
-           TH1F *histName = (TH1F*)key->ReadObj();
-           histName->SetLineColor(i+1);
-           hStack->Add(histName);
-           legend->AddEntry(histName,Form("Run %s",histName->GetName()));
-           i++;
-       }
-    }
+    
     TCanvas *c1 = new TCanvas(histName.c_str(),histName.c_str());
     c1->cd();
     if(histName=="mMFTClusterSensorIndex" || histName=="mMFTClusterPatternIndex"){
@@ -501,7 +471,6 @@ void compareHistoRunsPass(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
             histName->SetLineColor(i+1);
@@ -512,16 +481,7 @@ void compareHistoRunsPass(string histName){
             legend->AddEntry(histName,Form("Run %s",histName->GetName()));
             i++;
         }
-    }
-    else{
-       while ((key=(TKey*)next())) {
-           TH1F *histName = (TH1F*)key->ReadObj();
-           histName->SetLineColor(i+1);
-           hStack->Add(histName);
-           legend->AddEntry(histName,Form("Run %s",histName->GetName()));
-           i++;
-       }
-    }
+    
     TCanvas *c1 = new TCanvas(histName.c_str(),histName.c_str());
     c1->cd();
     if(histName=="mMFTClusterSensorIndex" || histName=="mMFTClusterPatternIndex"){
@@ -558,7 +518,6 @@ void compareHistoRunList(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
             histName->SetLineColor(i+1);
@@ -569,16 +528,7 @@ void compareHistoRunList(string histName){
             legend->AddEntry(histName,Form("Run %s",histName->GetName()));
             i++;
         }
-    }
-    else{
-       while ((key=(TKey*)next())) {
-           TH1F *histName = (TH1F*)key->ReadObj();
-           histName->SetLineColor(i+1);
-           hStack->Add(histName);
-           legend->AddEntry(histName,Form("Run %s",histName->GetName()));
-           i++;
-       }
-    }
+    
     TCanvas *c1 = new TCanvas(histName.c_str(),histName.c_str());
     c1->cd();
     if(histName=="mMFTClusterSensorIndex" || histName=="mMFTClusterPatternIndex"){
@@ -615,7 +565,6 @@ void compareHistoRunListPass(string histName){
     TKey *key;
     double norm;
     int i = 0;
-    if(histName=="mMFTClusterSensorIndex" || histName=="mMFTTrackPhi" || histName=="mMFTTrackEta" || histName=="mMFTTrackTanl" || histName=="mMFTTrackNumberOfClusters"){
         while ((key=(TKey*)next())) {
             TH1F *histName = (TH1F*)key->ReadObj();
             histName->SetLineColor(i+1);
@@ -626,16 +575,7 @@ void compareHistoRunListPass(string histName){
             legend->AddEntry(histName,Form("Run %s",histName->GetName()));
             i++;
         }
-    }
-    else{
-       while ((key=(TKey*)next())) {
-           TH1F *histName = (TH1F*)key->ReadObj();
-           histName->SetLineColor(i+1);
-           hStack->Add(histName);
-           legend->AddEntry(histName,Form("Run %s",histName->GetName()));
-           i++;
-       }
-    }
+    
     TCanvas *c1 = new TCanvas(histName.c_str(),histName.c_str());
     c1->cd();
     if(histName=="mMFTClusterSensorIndex" || histName=="mMFTClusterPatternIndex"){
