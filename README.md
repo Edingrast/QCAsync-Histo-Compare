@@ -71,6 +71,6 @@ Afterwards the script downloads files based on previous choices and saves them i
 Please note that each time you run the same download and pass choice, the files will be rewritten.
 
 ## Analysis
-Afterwards the script will ask about analysis, whether you want to compare histogram, where you enter the same choices as for download. Results are stored in files named according to choices of download (Download is exchanged for Analysis).
+Afterwards the script will ask about analysis, whether you want to compare histogram, where you enter the same choices as for download. Furthermore the program will ask whether the user wants to create a ratio plot of given two runs. The Y axis has to be corrected by the user in TBrowser, as it depends on given runs. Results are stored in files named according to choices of download (Download is exchanged for Analysis).
 
-The analysis is done by a separate function in the bash script and a separate script. This leaves an open window for any future macros used for analysis that can be just added as a bash option. Furthermore it allows to run only analysis script on previously downloaded data without the need to download it everytime one wants to analyse them.
+The analysis is done by a separate functions in the bash script and a separate script. This leaves an open window for any future macros used for analysis that can be just added as a bash option. Furthermore it allows to run only analysis script on previously downloaded data without the need to download it everytime one wants to analyse them.
