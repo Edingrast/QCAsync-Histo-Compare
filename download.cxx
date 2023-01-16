@@ -367,7 +367,7 @@ void getTracksHistoRuns(string histName, vector<string> passlist, int runNumber1
     }
 
     //string histName = "mMFTTrackTanl";
-    string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/tracks/";
+    string fixedPathPart = "/qc_async/MFT/MO/Tracks/tracks/";
     stringstream ss;
     ss << fixedPathPart << histName;
     string specificPath = ss.str();
@@ -434,7 +434,7 @@ void getClustersHistoRuns(string histName, vector<string> passlist, int runNumbe
         }
 
         //string histName = "mMFTTrackTanl";
-        string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/clusters/";
+        string fixedPathPart = "/qc_async/MFT/MO/Clusters/clusters/";
         stringstream ss;
         ss << fixedPathPart << histName;
         string specificPath = ss.str();
@@ -495,7 +495,7 @@ void getTracksHistoTime(string histName, vector<string> passlist, time_t ts_star
     
     o2::ccdb::CcdbApi api;
     api.init("ali-qcdb-gpn.cern.ch:8083");
-    string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/tracks/";
+    string fixedPathPart = "/qc_async/MFT/MO/Tracks/tracks/";
     stringstream tt;
     tt << fixedPathPart << histName;
     string specificPath = tt.str();
@@ -603,7 +603,7 @@ void getClustersHistoTime(string histName, vector<string> passlist, time_t ts_st
 {
     o2::ccdb::CcdbApi api;
     api.init("ali-qcdb-gpn.cern.ch:8083");
-    string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/clusters/";
+    string fixedPathPart = "/qc_async/MFT/MO/Clusters/clusters/";
     stringstream tt;
     tt << fixedPathPart << histName;
     string specificPath = tt.str();
@@ -722,7 +722,7 @@ void getClustersHistoRunList(string histName, vector<string> passlist, vector<in
             for(int j = 0; j<passlist.size();j++){
                 metadata["PassName"] = passlist[j];
             api.init("ali-qcdb-gpn.cern.ch:8083");
-            string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/clusters/";
+            string fixedPathPart = "/qc_async/MFT/MO/Clusters/clusters/";
             stringstream ss;
             ss << fixedPathPart << histName;
             string specificPath = ss.str();
@@ -750,7 +750,7 @@ void getClustersHistoRunList(string histName, vector<string> passlist, vector<in
                     map<string, string> metadata;
                     metadata["RunNumber"] = to_string(runNumbers[i]);
                     api.init("ali-qcdb-gpn.cern.ch:8083");
-                    string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/clusters/";
+                    string fixedPathPart = "/qc_async/MFT/MO/Clusters/clusters/";
                     stringstream ss;
                     ss << fixedPathPart << histName;
                     string specificPath = ss.str();
@@ -786,7 +786,7 @@ void getTracksHistoRunList(string histName, vector<string> passlist, vector<int>
         for(int j = 0; j<passlist.size();j++){
             metadata["PassName"] = passlist[j];
         api.init("ali-qcdb-gpn.cern.ch:8083");
-        string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/tracks/";
+        string fixedPathPart = "/qc_async/MFT/MO/Tracks/tracks/";
         stringstream ss;
         ss << fixedPathPart << histName;
         string specificPath = ss.str();
@@ -814,7 +814,7 @@ void getTracksHistoRunList(string histName, vector<string> passlist, vector<int>
                 map<string, string> metadata;
                 metadata["RunNumber"] = to_string(runNumbers[i]);
                 api.init("ali-qcdb-gpn.cern.ch:8083");
-                string fixedPathPart = "/qc_async/MFT/MO/QcMFTAsync/tracks/";
+                string fixedPathPart = "/qc_async/MFT/MO/Tracks/tracks/";
                 stringstream ss;
                 ss << fixedPathPart << histName;
                 string specificPath = ss.str();
